@@ -12,15 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use std::{num::NonZeroUsize, sync::Arc};
-
 use glazier::{Modifiers, PointerButton};
+use image::GenericImageView;
+use std::{num::NonZeroUsize, sync::Arc};
 use vello::{
     kurbo::{Affine, Point, Size},
     peniko::Color,
     util::{RenderContext, RenderSurface},
     AaSupport, RenderParams, Renderer, RendererOptions, Scene,
 };
+use winit::window::Icon;
 use winit::{
     event::WindowEvent,
     event_loop::{ControlFlow, EventLoop},

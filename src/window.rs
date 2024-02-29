@@ -6,8 +6,6 @@ use winit::{
     window::{Icon, Window, WindowBuilder},
 };
 
-use crate::color::Color;
-
 #[derive(Clone)]
 pub struct WindowOptions {
     pub title: &'static str,
@@ -24,7 +22,6 @@ pub struct WindowOptions {
     pub decorations: bool,
     pub window_icon: Option<Icon>,
     pub active: bool,
-    pub background: Color,
 }
 
 impl Default for WindowOptions {
@@ -47,7 +44,6 @@ impl Default for WindowOptions {
             decorations: false,
             #[cfg(feature = "windows")]
             decorations: true,
-            background: Color::Hex(0x1818125),
         }
     }
 }
@@ -74,6 +70,7 @@ pub fn new(event_loop: &EventLoopWindowTarget<()>, options: WindowOptions) -> Wi
         use winit::platform::wayland::WindowBuilderExtWayland as _;
         window_builder = window_builder.with_name(app_id, "");
     }
+
     #[allow(dead_code)]
     #[cfg(feature = "x11")]
     if let Some(app_id) = options.id {
