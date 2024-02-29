@@ -30,8 +30,8 @@ pub struct WindowOptions {
 impl Default for WindowOptions {
     fn default() -> Self {
         WindowOptions {
-            title: "Volt App",
-            id: Some("volt-app"),
+            title: "Xilem App",
+            id: Some("xilem-app"),
             size: (1200, 700),
             min_size: (800, 400),
             max_size: (1600, 900),

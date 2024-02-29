@@ -7,6 +7,7 @@ mod id;
 pub mod text;
 pub mod view;
 pub mod widget;
+mod window;
 
 xilem_core::message!(Send);
 
