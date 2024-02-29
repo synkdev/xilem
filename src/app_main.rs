@@ -31,7 +31,7 @@ use crate::{
     app::App,
     view::View,
     widget::{Event, PointerCrusher},
-    window::WindowOptions,
+    window::{self, WindowOptions},
 };
 
 // This is a bit of a hack just to get a window launched. The real version
@@ -139,13 +139,7 @@ impl<T: Send + 'static, V: View<T> + 'static> AppLauncher<T, V> {
         let event_loop = EventLoop::new().unwrap();
         event_loop.set_control_flow(ControlFlow::Wait);
         let _guard = self.app.rt.enter();
-        let window = WindowBuilder::new()
-            .with_inner_size(winit::dpi::LogicalSize {
-                width: 1024.,
-                height: 768.,
-            })
-            .build(&event_loop)
-            .unwrap();
+        let window = window::new(&event_loop, self.options);
         let mut main_state = MainState::new(self.app, window);
 
         event_loop

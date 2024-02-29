@@ -52,7 +52,7 @@ impl Default for WindowOptions {
     }
 }
 
-pub fn new(event_loop: &EventLoopWindowTarget<()>, options: WindowOptions) -> Arc<Window> {
+pub fn new(event_loop: &EventLoopWindowTarget<()>, options: WindowOptions) -> Window {
     #[allow(unused_mut)]
     let mut window_builder = WindowBuilder::new()
         .with_inner_size(LogicalSize::new(options.size.0, options.size.1))
@@ -85,5 +85,5 @@ pub fn new(event_loop: &EventLoopWindowTarget<()>, options: WindowOptions) -> Ar
         .build(event_loop)
         .expect("Could not create a Winit window");
 
-    Arc::new(window)
+    window
 }
